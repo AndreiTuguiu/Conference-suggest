@@ -3,10 +3,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentValidation;
-using FluentValidation.Results;
 using MediatR.Pipeline;
 
-namespace RatingSystem.WebApi.MediatorPipeline
+namespace ConferenceSuggest.WebApi.MediatorPipeline
 {
     public class ValidationPreProcessor<TRequest> : IRequestPreProcessor<TRequest>
     {

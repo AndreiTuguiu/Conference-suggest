@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace RatingSystem.WebApi.Middleware
+namespace ConferenceSuggest.WebApi.Middleware
 {
     public class ErrorMiddleware
     {
@@ -20,6 +20,7 @@ namespace RatingSystem.WebApi.Middleware
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.StackTrace);
             }
         }

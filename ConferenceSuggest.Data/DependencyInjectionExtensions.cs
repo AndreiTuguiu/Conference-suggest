@@ -1,9 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using ConferenceSuggest.Data;
 
-namespace RatingSystem.Data
+namespace ConferenceSuggest.Data
 {
     public static class DependencyInjectionExtensions
     {

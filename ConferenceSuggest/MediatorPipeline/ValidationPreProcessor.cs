@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RatingSystem
+namespace ConferenceSuggest
 {
     public class ValidationPreProcessor<TRequest> : IRequestPreProcessor<TRequest>
     {

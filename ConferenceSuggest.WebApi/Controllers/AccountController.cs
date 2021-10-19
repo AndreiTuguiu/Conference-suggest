@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RatingSystem.Application.Queries;
-using RatingSystem.PublishedLanguage.Commands;
+using ConferenceSuggest.Application.Queries;
+using ConferenceSuggest.PublishedLanguage.Commands;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RatingSystem.WebApi.Controllers
+namespace ConferenceSuggest.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

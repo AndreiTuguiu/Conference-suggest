@@ -1,7 +1,10 @@
 ﻿
 using Abstractions;
+using ConferenceSuggest.Data;
+using ConferenceSuggest.Models;
 using MediatR;
 using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -11,41 +14,43 @@ namespace ConferenceSuggest.Application
 {
     public class GetSuggestions
     {
-        public class Query : IRequest<List<Models.Conference>>
+        public class Query : IRequest<List<Conference>>
         {
-            public string AttendeeEmail { get; set; }
-            public int ConferenceId { get; set; }  
+            
         }
 
-        public class QueryHandler : IRequestHandler<Query, List<Models.Conference>>
+        public class QueryHandler : IRequestHandler<Query, List<Conference>>
         {
             public readonly IConfiguration _configuration;
-            public readonly IConferenceRepository _repository;
-            
-            public QueryHandler(IConfiguration configuration,IConferenceRepository repository)
+            //public readonly IConferenceRepository _repository;
+            public readonly ConferenceDbContext _dbContext;
+
+            public QueryHandler(IConfiguration configuration, ConferenceDbContext dbContext)
             {
                 _configuration = configuration;
-                _repository = repository;
-                
+                //_repository = repository;
+                _dbContext = dbContext;
+
             }
-            public async Task<List<Models.Conference>> Handle(Query request, CancellationToken cancellationToken)
+            public Task<List<Conference>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var conferences = await _repository.GetConferencesAsync(request.ConferenceId, request.AttendeeEmail, cancellationToken);
-                var attendeeEmail = conferences.Select(x => x.AttendeeEmail).ToArray();
+                Random r = new Random();
+                int toSkip = r.Next(0, _dbContext.Conferences.Count());
+                var db = _dbContext.Conferences;
+                var result = db.Select(c => new Conference
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    OrganizerEmail = c.OrganizerEmail,
+                    StartDate = c.StartDate,
+                    EndDate = c.EndDate,
+                    LocationId = c.LocationId
+                }).Skip(toSkip)
+                .Take(3)
+                .ToList();
 
-                var aConference = await _repository.GetConferencesAsync(attendeeEmail, cancellationToken);
+                return Task.FromResult(result);
 
-                var listOfRecommended = aConference
-                    .Where(c => c.ConferenceId != request.ConferenceId)
-                    .ToList();
-
-                var ids = listOfRecommended.GroupBy(o => o.ConferenceId)
-                    .ToDictionary(x => x.Key, y => y.Count())
-                    .Take(_configuration.GetValue("SuggestionsCount", 3))
-                    .Select(k => k.Key)
-                    .ToArray();
-
-                return await _repository.GetConferencesAsync(ids, cancellationToken);
             }
         }
     }

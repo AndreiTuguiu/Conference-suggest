@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "RatingSystem.WebApi": {
+    "ConferenceSuggest.WebApi": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

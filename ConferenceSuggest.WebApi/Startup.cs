@@ -1,20 +1,19 @@
-﻿using Abstractions;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using RatingSystem.Application;
-using RatingSystem.WebApi.Swagger;
+using ConferenceSuggest.Application;
+using ConferenceSuggest.WebApi.Swagger;
 using MediatR;
-using RatingSystem.Application.Queries;
-using RatingSystem.ExternalService;
-using RatingSystem.PublishedLanguage.Events;
+using ConferenceSuggest.Application.Queries;
+using ConferenceSuggest.ExternalService;
+using ConferenceSuggest.PublishedLanguage.Events;
 using MediatR.Pipeline;
 using FluentValidation;
-using RatingSystem.WebApi.MediatorPipeline;
-using RatingSystem.WebApi.Middleware;
+using ConferenceSuggest.WebApi.MediatorPipeline;
+using ConferenceSuggest.WebApi.Middleware;
 
-namespace RatingSystem.WebApi
+namespace ConferenceSuggest.WebApi
 {
     public class Startup
     {

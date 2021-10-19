@@ -3,21 +3,18 @@ using MediatR;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using RatingSystem.Application;
-using RatingSystem.Application.Queries;
-using RatingSystem.Application.Services;
-using RatingSystem.Data;
-using RatingSystem.ExternalService;
-using RatingSystem.Models;
-using RatingSystem.PublishedLanguage.Commands;
-using RatingSystem.PublishedLanguage.Events;
+using ConferenceSuggest.Application;
+using ConferenceSuggest.Application.Queries;
+using ConferenceSuggest.Data;
+using ConferenceSuggest.ExternalService;
+using ConferenceSuggest.PublishedLanguage.Commands;
+using ConferenceSuggest.PublishedLanguage.Events;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RatingSystem
+namespace ConferenceSuggest
 {
     class Program
     {
@@ -37,7 +34,7 @@ namespace RatingSystem
             var source = new CancellationTokenSource();
             var cancellationToken = source.Token;
             services.RegisterBusinessServices(Configuration);
-            services.AddPaymentDataAccess(Configuration);
+            services.AddConferencesDataAccess(Configuration);
 
             services.Scan(scan => scan
                 .FromAssemblyOf<ListOfAccounts>()
@@ -59,7 +56,6 @@ namespace RatingSystem
             // build
             var serviceProvider = services.BuildServiceProvider();
             var database = serviceProvider.GetRequiredService<ConferenceDbContext>();
-            var ibanService = serviceProvider.GetRequiredService<NewIban>();
             var mediator = serviceProvider.GetRequiredService<IMediator>();
 
 

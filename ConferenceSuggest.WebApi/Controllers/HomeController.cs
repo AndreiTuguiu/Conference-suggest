@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace RatingSystem.WebApi.Controllers
+namespace ConferenceSuggest.WebApi.Controllers
 {
     // http://localhost:5000/api/Home/GetHello
     [Route("api/[controller]")]

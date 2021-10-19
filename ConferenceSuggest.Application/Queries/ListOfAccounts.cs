@@ -1,14 +1,11 @@
-﻿using Abstractions;
+﻿using ConferenceSuggest.Data;
 using FluentValidation;
 using MediatR;
-using RatingSystem.Data;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RatingSystem.Application.Queries
+namespace ConferenceSuggest.Application.Queries
 {
     public class ListOfAccounts
     {

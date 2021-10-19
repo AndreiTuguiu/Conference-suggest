@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace RatingSystem.PublishedLanguage.Commands
+namespace ConferenceSuggest.PublishedLanguage.Commands
 {
     public class MakeNewAccount : IRequest
     {

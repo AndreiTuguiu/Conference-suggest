@@ -1,15 +1,10 @@
 ﻿using ConferenceSuggest.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConferenceSuggest.Data.Configuration
 {
-        public class ConferenceXAttendeeConfiguration : IEntityTypeConfiguration<Models.ConferenceXAttendee>
+    public class ConferenceXAttendeeConfiguration : IEntityTypeConfiguration<Models.ConferenceXAttendee>
         {
             public void Configure(EntityTypeBuilder<ConferenceXAttendee> builder)
             {

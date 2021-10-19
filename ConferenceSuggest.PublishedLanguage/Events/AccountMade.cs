@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace RatingSystem.PublishedLanguage.Events
+namespace ConferenceSuggest.PublishedLanguage.Events
 {
     public class AccountMade: INotification
     {

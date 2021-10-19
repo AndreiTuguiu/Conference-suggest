@@ -1,11 +1,8 @@
-﻿using Abstractions;
+﻿using ConferenceSuggest.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using RatingSystem.Application.Services;
-using RatingSystem.Application.WriteOperations;
-using static RatingSystem.Application.Queries.ListOfAccounts;
 
-namespace RatingSystem.Application
+namespace ConferenceSuggest.Application
 {
     public static class DependencyInjectionExtensions
     {
@@ -18,9 +15,8 @@ namespace RatingSystem.Application
             //services.AddTransient<PurchaseProduct>();
             //services.AddTransient<QueryHandler>();
 
-            services.AddSingleton<NewIban>();
-
-            services.AddSingleton<Data.ConferenceDbContext>();
+            //services.AddSingleton<ConferenceDbContext>();
+            services.AddConferencesDataAccess(configuration);
 
             services.AddSingleton(sp =>
             {

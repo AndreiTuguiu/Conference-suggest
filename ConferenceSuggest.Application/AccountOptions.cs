@@ -1,4 +1,4 @@
-﻿namespace RatingSystem.Application
+﻿namespace ConferenceSuggest.Application
 {
     public class AccountOptions
     {
